@@ -16,26 +16,21 @@ const signin = (req, res, next) => {
 				if (isMatch) {
 					jwt.sign({ user: user.username }, secret,{expiresIn :"12h"}, (err, token)=>{
 						res.header('auth', token);
-						res.send(200).json({
-                            message: 'Signed In'
-                        })
+						res.status(200).json('Signed In')
 					});					
 				} else {
-					errors.push({ message: "Wrong Password." })
-					if (errors.length > 0) {
-						res.json({
-							error: errors
+						res.status(400).json({
+							message: 'Wrong Password'
 						});
-					}
+					
 				}
 			});
 		} else {
-			errors.push({ message: "Invalid username. Please Sign up or make sure your username is correctly typed." });
-			if (errors.length > 0) {
-				res.json({
-					error: errors
-				});
-			}
+			console.log(req.body)
+			res.status(400).json({
+				message: 'Invalid username. Please Sign up or make sure your username is correctly typed.'
+			})
+		
 
 		}
 	});

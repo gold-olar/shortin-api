@@ -5,15 +5,21 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const db = require('./config/database');
+const cors = require('cors')
 require('dotenv').config();
 
 
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
-const signinRouter = require('./routes/signin')
+const signinRouter = require('./routes/signin');
+const userRouter = require('./routes/users')
 
 
 const app = express();
+
+
+//Cors Middleware
+app.use(cors())
 
 //Database Connection
 mongoose.connect(db.mongoURI, {
@@ -35,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
+app.use('/user', userRouter);
 
 
 // catch 404 and forward to error handler

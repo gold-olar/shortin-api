@@ -13,38 +13,48 @@ const signUp = (req, res, next)=>{
     }
     
     if (errors.length > 0 ){
-      res.json({
+      res.status(406).json({
         status: 406,
         message: 'i don jam error oh boss man',
         errors: errors
       })
     }else{
-        const newUser = new User({
-            username: username,
-            email: email,
-            password: password,
-          });
-          bcrypt.genSalt(10,(err, salt)=>{
-              bcrypt.hash(newUser.password, salt, (err, hash) => {
-              if (err) throw err;
-              newUser.password = hash;
-              newUser.save()
-                .then(user => {
-                  res.json({
-                      status : 200,
-                      message: 'User Registered',
-                      userDetails : user
-                  });
-                })
-                .catch(err => {
-                  console.log(err);
-                  return;
-
-                });
-            });
-
-
+      User.findOne({username: username})
+      .then(user=> {
+        if(user){
+          res.json({
+            message: "User already exists with such username"
           })
+        }else{
+          const newUser = new User({
+              username: username,
+              email: email,
+              password: password,
+            });
+            bcrypt.genSalt(10,(err, salt)=>{
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if (err) throw err;
+                newUser.password = hash;
+                newUser.save()
+                  .then(user => {
+                    res.json({
+                        status : 200,
+                        message: 'User Registered',
+                        userDetails : user
+                    });
+                  })
+                  .catch(err => {
+                    console.log(err);
+                    return;
+  
+                  });
+              });
+  
+  
+            })
+        } 
+      })
+ 
     }
 
 }
