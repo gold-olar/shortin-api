@@ -16,7 +16,10 @@ const signin = (req, res, next) => {
 				if (isMatch) {
 					jwt.sign({ user: user.username }, secret,{expiresIn :"12h"}, (err, token)=>{
 						res.header('auth', token);
-						res.status(200).json('Signed In')
+						res.status(200).json({
+							message: 'Signed In',
+							user: user
+						})
 					});					
 				} else {
 						res.status(400).json({
@@ -26,7 +29,7 @@ const signin = (req, res, next) => {
 				}
 			});
 		} else {
-			console.log(req.body)
+			
 			res.status(400).json({
 				message: 'Invalid username. Please Sign up or make sure your username is correctly typed.'
 			})
