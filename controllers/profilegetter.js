@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 const profilegetter = (req, res, next) => {
-    const { id } = req.params;
+    const { id } = req.body;
     User.findOneAndUpdate({ _id: id }, { $inc: { links: 1 } })
         .then(user => {
             if (user) {
