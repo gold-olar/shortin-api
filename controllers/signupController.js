@@ -22,7 +22,7 @@ const signUp = (req, res, next)=>{
       User.findOne({username: username})
       .then(user=> {
         if(user){
-          res.json({
+          res.status(406).json({
             message: "User already exists with such username"
           })
         }else{
@@ -37,11 +37,7 @@ const signUp = (req, res, next)=>{
                 newUser.password = hash;
                 newUser.save()
                   .then(user => {
-                    res.json({
-                        status : 200,
-                        message: 'User Registered',
-                        userDetails : user
-                    });
+                    res.status(200).json(user);
                   })
                   .catch(err => {
                     console.log(err);
