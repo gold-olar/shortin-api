@@ -7,7 +7,7 @@ const signUp = (req, res, next)=>{
     if (password != password2) {
       errors.push({ message: 'Passwords do not match' });
     } if (password.length < 4) {
-      errors.push({ message: 'Password must be at least 4 characters' });
+      errors.push({ message: 'Password must be at least 4 characters' });res
     }if (username.length < 4) {
       errors.push({ message: 'Username must be at least 4 characters' });
     }

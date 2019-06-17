@@ -43,6 +43,12 @@ app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
 app.use('/user', userRouter);
 
+app.get('*', (req, res)=>{
+  res.json({
+    message: 'Ode Stop guessing Routes, Move ahead bissh..Get a life...'
+  })
+})
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

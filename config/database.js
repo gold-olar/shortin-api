@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV  === 'production'){
 	module.exports ={
-		mongoURI:'mongodb://ptadmin:ptadmin99@ds145412.mlab.com:45412/private-trips2'
+		mongoURI:'mongodb://shorttin_admin:shortin123@ds137857.mlab.com:37857/shorttin-db'
  
 	}
 }else{
