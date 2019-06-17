@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-const profilegetter = (req, res, next) => {
+const profilegetter = (req, res) => {
     const { id } = req.body;
     User.findOneAndUpdate({ _id: id }, { $inc: { links: 1 } })
         .then(user => {
