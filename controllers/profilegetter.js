@@ -3,7 +3,7 @@ const Links = require('../models/Links');
 
 
 const profilegetter = (req, res) => {
-    const {id} = req.params;
+    const {id} = req.body;
     User.findOneAndUpdate({ _id: id }, { $inc: { links: 1 } }, {useFindAndModify: false})
         .then(user => {
             if(!user){

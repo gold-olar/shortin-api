@@ -19,7 +19,7 @@ const addLink = (req, res) => {
             .save()
             .then(links=> {
                 console.log(123456789)
-                res.status(200).redirect('/user');
+                res.status(200).json('Added to database');
             });
     }
 };
