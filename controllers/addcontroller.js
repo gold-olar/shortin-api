@@ -9,16 +9,16 @@ const addLink = (req, res) => {
     if (errors.length > 0){
         res.status(406).json(errors)
     }else{
-        const {longlink, shortlink } = req.body
+        const {longlink, shortlink, username } = req.body
         const newLink = {
-            longLink: longlink,
-            shortlink: shortlink ,
+            long: longlink,
+            short: shortlink ,
             username: username
         }
         new Links(newLink)
             .save()
             .then(links=> {
-                console.log(123456789)
+                console.log(newLink)
                 res.status(200).json('Added to database');
             });
     }

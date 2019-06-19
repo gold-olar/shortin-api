@@ -6,14 +6,14 @@ const LinksSchema = new Schema({
   username:{
     type: String,
     required: true
-},
-  longLink:{
+  },
+  long:{
       type: String,
       required: true
   },
-  shortLink:{
-    // required :true,
-    type: String
+  short:{
+    type: String,
+    required: true
   },  
   date:{
       type: Date,
