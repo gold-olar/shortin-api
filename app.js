@@ -12,7 +12,8 @@ require('dotenv').config();
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
 const signinRouter = require('./routes/signin');
-const userRouter = require('./routes/users')
+const userRouter = require('./routes/users');
+const addRouter = require('./routes/add')
 
 
 const app = express();
@@ -42,6 +43,8 @@ app.use('/', indexRouter);
 app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
 app.use('/user', userRouter);
+app.use('/addlink', addRouter);
+
 
 app.get('*', (req, res)=>{
   res.json({

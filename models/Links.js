@@ -3,12 +3,16 @@ const Schema = mongoose.Schema;
 
 
 const LinksSchema = new Schema({
+  username:{
+    type: String,
+    required: true
+},
   longLink:{
       type: String,
       required: true
   },
   shortLink:{
-    requiretrue,
+    // required :true,
     type: String
   },  
   date:{
@@ -19,7 +23,7 @@ const LinksSchema = new Schema({
 });
 
 
-const UserModel = mongoose.model('users', UserSchema);
-module.exports = UserModel;
+const LinkModel = mongoose.model('links', LinksSchema);
+module.exports = LinkModel;
 
 

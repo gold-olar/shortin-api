@@ -3,6 +3,6 @@ const router = express.Router();
 const profilegetter = require('../controllers/profilegetter')
 
 /* GET users listing. */
-router.post('/',profilegetter) 
+router.post('/:id',profilegetter) 
 
 module.exports = router;
