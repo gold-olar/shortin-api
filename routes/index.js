@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   res.status(200).json({
     message: "Welcome to Shortin's API",
     Owner: "Olamide Samuel",
-    AKA: Goldin 
+    AKA: "Goldin "
   });
 });
 
