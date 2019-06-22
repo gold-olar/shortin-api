@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 
 const LinksSchema = new Schema({
+  linkfinder:{
+    type: String,
+    required: true
+  }, 
   username:{
     type: String,
     required: true

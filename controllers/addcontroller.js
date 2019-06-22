@@ -10,7 +10,7 @@ const addLink = (req, res) => {
         res.status(406).json(errors)
     } else {
         const { longlink, shortlink, username } = req.body
-        console.log(longlink, shortlink)
+        //console.log(longlink, shortlink)
         const newLink = {
             long: longlink,
             short: shortlink,

@@ -13,7 +13,9 @@ const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
 const signinRouter = require('./routes/signin');
 const userRouter = require('./routes/users');
-const addRouter = require('./routes/add')
+const addRouter = require('./routes/add');
+const shortinRouter = require('./routes/shortin');
+const linkgetterRouter = require('./routes/linkgetter');
 
 
 const app = express();
@@ -39,18 +41,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+
 app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
 app.use('/user', userRouter);
 app.use('/addlink', addRouter);
+app.use('/shortin', shortinRouter);
+app.use('/', indexRouter);
+
 
 
 app.get('*', (req, res)=>{
   res.json({
     message: 'Ode Stop guessing Routes, Move ahead bissh..Get a life...'
   })
-})
+});
 
 
 // catch 404 and forward to error handler

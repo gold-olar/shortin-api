@@ -6,7 +6,7 @@ const secret = process.env.JWT_SECRET;
 
 
 const signin = (req, res, next) => {
-    const {username, password} = req.body;
+	const { username, password } = req.body;
 	let errors = []
 	User.findOne({
 		username: username
@@ -14,27 +14,24 @@ const signin = (req, res, next) => {
 		if (user) {
 			bcrypt.compare(password, user.password, (err, isMatch) => {
 				if (isMatch) {
-					jwt.sign({ user: user.username }, secret,{expiresIn :"12h"}, (err, token)=>{
+					jwt.sign({ user: user.username }, secret, { expiresIn: "12h" }, (err, token) => {
 						res.header('auth', token);
 						res.status(200).json({
 							message: 'Signed In',
 							user: user
 						})
-					});					
+					});
 				} else {
-						res.status(400).json({
-							message: 'Wrong Password'
-						});
-					
+					res.status(400).json({
+						message: 'Wrong Password'
+					});
+
 				}
 			});
 		} else {
-			
 			res.status(400).json({
 				message: 'Invalid username. Please Sign up or make sure your username is correctly typed.'
-			})
-		
-
+			});
 		}
 	});
 }
