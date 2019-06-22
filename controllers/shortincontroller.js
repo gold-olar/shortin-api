@@ -4,8 +4,10 @@ const Links = require('../models/Links');
 
 
 const shortin = (req, res) => {
-    const { longlink, username } = req.body
-    if (validator.isURL(longlink)) {
+    const { longlink, username } = req.body;
+    console.log(76897)
+    try{
+            if (validator.isURL(longlink)) {
         //Generate Random String
         const generated_string = randomstring.generate({
             length: 7,
@@ -42,8 +44,16 @@ const shortin = (req, res) => {
                 }
             })
     } else {
-        res.status(400).json(`Url ${longurl} is not a valid url`);
+        res.status(400).json(`Url ${longlink} is not a valid url`);
     };
+
+    }
+    catch(err){
+        if(err){
+            console.log(err)
+        }
+
+    }
 
 }
 module.exports = shortin;
