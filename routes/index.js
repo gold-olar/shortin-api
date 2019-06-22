@@ -8,7 +8,9 @@ router.get('/:linkgetter', linkgettercontroller)
 router.get('/', function(req, res, next) {
   // console.log('Welcome to the Shortin API..')
   res.status(200).json({
-    message: "Welcome to Shortin's API"
+    message: "Welcome to Shortin's API",
+    Owner: Olamide Samuel,
+    AKA: Goldin 
   });
 });
 
