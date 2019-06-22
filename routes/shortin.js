@@ -4,7 +4,7 @@ const shortincontroller = require('../controllers/shortincontroller');
 
 
 
-router.get('/',shortincontroller);
+router.post('/',shortincontroller);
 
 
 module.exports = router;

@@ -11,7 +11,6 @@ const shortin = (req, res) => {
             length: 7,
             charset: 'alphabetic'
         });
-
         //Search database if link has already been shortined prev
         Links.findOne({
             long: longlink
