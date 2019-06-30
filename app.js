@@ -15,7 +15,7 @@ const signinRouter = require('./routes/signin');
 const userRouter = require('./routes/users');
 const addRouter = require('./routes/add');
 const shortinRouter = require('./routes/shortin');
-const linkgetterRouter = require('./routes/linkgetter');
+const linksgetterRouter = require('./routes/linkgetter');
 
 
 const app = express();
@@ -48,6 +48,7 @@ app.use('/user', userRouter);
 app.use('/addlink', addRouter);
 app.use('/shortin', shortinRouter);
 app.use('/', indexRouter);
+app.use('/getlinks', linksgetterRouter);
 
 
 

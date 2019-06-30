@@ -3,20 +3,18 @@ const bcrypt= require('bcryptjs');
 
 const signUp = (req, res, next)=>{
     const{username, email, password, password2} = req.body
-    let errors = [];
+    let errors = '';
     if (password != password2) {
-      errors.push({ message: 'Passwords do not match' });
+      errors = 'Passwords do not match';
     } if (password.length < 4) {
-      errors.push({ message: 'Password must be at least 4 characters' });res
+      errors = 'Password must be at least 4 characters';
     }if (username.length < 4) {
-      errors.push({ message: 'Username must be at least 4 characters' });
+      errors = 'Username must be at least 4 characters';
     }
     
     if (errors.length > 0 ){
       res.status(406).json({
-        status: 406,
-        message: 'i don jam error oh boss man',
-        errors: errors
+        message: errors,
       })
     }else{
       User.findOne({username: username})
